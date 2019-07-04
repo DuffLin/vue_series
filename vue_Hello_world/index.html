@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue hello world</title>
+    <link rel="stylesheet" href="index.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        {{message}}
+        <br/><span v-if="seen">this seen is a boolean</span>
+        <ol>
+            <li v-for="item in todos">{{item.text}}</li>
+        </ol>
+        <input type="text" v-model="message"/>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+        <ul>
+            <todo-item></todo-item><!--components-->
+        </ul>
+        <ol>
+            <props-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+            </props-item><!--props-->
+        </ol>
+        <!--vue过度-->
+        <button v-on:click="show = !show">
+            Toggle
+        </button>
+        <transition name="fade">
+            <p v-if="show">hello</p>
+        </transition>
+        <transition name="slide-fade">
+            <p v-if="show">hello</p>
+        </transition>
+        <transition name="bounce">
+            <p v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+        </transition>
+        <transition name="appear">
+            <p v-if="show">Lorem fermentum id. senectus et netus.</p>
+        </transition>
+    </div>
+
+<script src="index.js"></script>
+</body>
+</html>
